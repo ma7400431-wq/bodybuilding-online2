@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المطرقة - تدريب كمال الأجسام</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .poster {
+            width: 800px;
+            height: 1200px;
+            margin: 20px auto;
+            position: relative;
+            background: linear-gradient(45deg, #000 0%, #1a1a1a 50%, #333 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 20px 40px rgba(255,69,0,0.3); }
+            to { box-shadow: 0 20px 60px rgba(255,69,0,0.6); }
+        }
+        
+        .background-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="weights" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="3" fill="%23333" opacity="0.3"/><circle cx="40" cy="40" r="3" fill="%23333" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23weights)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 40px 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .brand-name {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ff4500;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hammer-icon {
+            font-size: 3rem;
+            color: #ff4500;
+            margin: 20px 0;
+            display: inline-block;
+            animation: swing 2s ease-in-out infinite;
+        }
+        
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .main-content {
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 69, 0, 0.1);
+            border: 2px solid #ff4500;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: #ff4500;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            color: #ff4500;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .feature-desc {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        
+        .contact-section {
+            background: linear-gradient(45deg, #ff4500, #ff6500);
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px);
+            animation: move 4s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .phone-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 2px;
+        }
+        
+        .call-text {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .motivational-text {
+            background: rgba(0,0,0,0.7);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ff4500;
+        }
+        
+        .motivational-text p {
+            font-size: 1.1rem;
+            color: #fff;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.5);
+            color: #888;
+        }
+        
+        .muscle-silhouette {
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.1;
+            font-size: 15rem;
+            color: #ff4500;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="background-pattern"></div>
+        <div class="muscle-silhouette">💪</div>
+        
+        <div class="header">
+            <div class="brand-name">المطرقة</div>
+            <div class="hammer-icon">🔨</div>
+            <div class="tagline">اصنع جسمك.. اصنع قوتك</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="service-title">تدريب كمال الأجسام أونلاين</div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🏋️‍♂️</div>
+                    <div class="feature-title">برامج تدريبية مخصصة</div>
+                    <div class="feature-desc">خطط تدريب مصممة خصيصاً لأهدافك وقدراتك البدنية</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">متابعة يومية أونلاين</div>
+                    <div class="feature-desc">إرشاد ومتابعة مستمرة عبر الإنترنت لضمان تقدمك</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🥗</div>
+                    <div class="feature-title">نظام غذائي متكامل</div>
+                    <div class="feature-desc">خطط تغذية علمية لبناء العضلات وحرق الدهون</div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">نتائج مضمونة</div>
+                    <div class="feature-desc">تحقيق أهدافك في أقصر وقت ممكن مع أفضل النتائج</div>
+                </div>
+            </div>
+            
+            <div class="motivational-text">
+                <p>"القوة لا تأتي من القدرة البدنية، بل من الإرادة التي لا تقهر"</p>
+            </div>
+            
+            <div class="contact-section">
+                <div class="call-text">ابدأ رحلتك اليوم</div>
+                <div class="phone-number">01022209537</div>
+                <div class="call-text">اتصل الآن واحصل على استشارة مجانية</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>المطرقة - مدربك الشخصي أونلاين</p>
+            <p>🔥 اكسر حدودك.. حقق أحلامك 🔥</p>
+        </div>
+    </div>
+</body>
+</html>
